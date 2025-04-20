@@ -60,11 +60,21 @@ export function AiChatbot() {
       ]);
     } catch (error) {
       console.error("Error sending message:", error);
+      
+      // Fallback response in case the API isn't working
+      let fallbackResponse = "Sorry, I encountered an error. Please try again later.";
+      
+      // Check if the message appears to be in Arabic (simplified detection)
+      const containsArabic = /[\u0600-\u06FF]/.test(inputMessage);
+      if (containsArabic) {
+        fallbackResponse = "عذراً، حدث خطأ. يرجى المحاولة مرة أخرى لاحقاً.";
+      }
+      
       setMessages((prev) => [
         ...prev,
         {
           role: "assistant",
-          content: "Sorry, I encountered an error. Please try again later.",
+          content: fallbackResponse,
         },
       ]);
     } finally {
@@ -96,7 +106,13 @@ export function AiChatbot() {
       setDietPlan(plan);
     } catch (error) {
       console.error("Error generating diet plan:", error);
-      setDietPlan("Sorry, I encountered an error generating your diet plan. Please try again later.");
+      
+      // Provide localized error message based on selected language
+      if (dietPlanInput.language === "arabic") {
+        setDietPlan("عذراً، حدث خطأ أثناء إنشاء خطة النظام الغذائي. يرجى المحاولة مرة أخرى لاحقاً.");
+      } else {
+        setDietPlan("Sorry, I encountered an error generating your diet plan. Please try again later.");
+      }
     } finally {
       setIsDietPlanLoading(false);
     }
