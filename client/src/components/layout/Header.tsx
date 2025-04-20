@@ -25,9 +25,9 @@ export function Header() {
           <div className="max-w-7xl mx-auto flex justify-between items-center">
             <Link href="/" className="text-white flex items-center space-x-2">
               <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
-                <span className="font-display text-dark text-xl font-bold">E</span>
+                <span className="font-display text-dark text-xl font-bold">AI</span>
               </div>
-              <span className="font-display text-2xl tracking-wider">ELEVATE</span>
+              <span className="font-display text-2xl tracking-wider">TRAINER</span>
             </Link>
 
             <div className="hidden md:flex space-x-8">

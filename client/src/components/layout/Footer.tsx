@@ -9,9 +9,9 @@ export function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center mb-8">
           <Link href="/" className="text-white flex items-center space-x-2">
             <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
-              <span className="font-display text-dark text-xl font-bold">E</span>
+              <span className="font-display text-dark text-xl font-bold">AI</span>
             </div>
-            <span className="font-display text-2xl tracking-wider">ELEVATE</span>
+            <span className="font-display text-2xl tracking-wider">TRAINER</span>
           </Link>
 
           <div className="flex space-x-6 mt-6 md:mt-0">
@@ -51,8 +51,8 @@ export function Footer() {
             <div>
               <h4 className="font-display text-xl mb-4">ABOUT US</h4>
               <p className="text-muted-foreground text-sm">
-                Elevate is dedicated to helping you achieve your fitness goals through
-                proven training methods, expert guidance, and a supportive community.
+                AI Trainer is a free platform dedicated to helping you achieve your fitness goals through
+                AI-powered training methods, personalized guidance, and a supportive community.
               </p>
             </div>
 
@@ -113,7 +113,7 @@ export function Footer() {
               <ul className="space-y-2 text-sm">
                 <li className="flex items-start">
                   <Mail className="text-primary h-4 w-4 mt-1 mr-3" />
-                  <span className="text-muted-foreground">support@elevate-fitness.com</span>
+                  <span className="text-muted-foreground">support@ai-trainer.com</span>
                 </li>
                 <li className="flex items-start">
                   <Phone className="text-primary h-4 w-4 mt-1 mr-3" />
@@ -121,7 +121,7 @@ export function Footer() {
                 </li>
                 <li className="flex items-start">
                   <MapPin className="text-primary h-4 w-4 mt-1 mr-3" />
-                  <span className="text-muted-foreground">123 Fitness Street, Gym City, GC 12345</span>
+                  <span className="text-muted-foreground">AI Cloud, Digital Avenue, Virtual Space</span>
                 </li>
               </ul>
             </div>
@@ -129,7 +129,7 @@ export function Footer() {
 
           <div className="border-t border-border mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
             <p className="text-muted-foreground text-sm">
-              &copy; {new Date().getFullYear()} Elevate Fitness. All rights reserved.
+              &copy; {new Date().getFullYear()} AI Trainer. Free for everyone, forever.
             </p>
             <div className="flex space-x-4 mt-4 md:mt-0 text-sm">
               <a href="#" className="text-muted-foreground hover:text-primary transition-colors">

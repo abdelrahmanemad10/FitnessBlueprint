@@ -12,10 +12,10 @@ export function WorkoutProgram() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="font-display text-4xl md:text-5xl mb-4">
-            YOUR <span className="text-primary">TRAINING PLAN</span>
+            <span className="text-primary">AI-POWERED</span> TRAINING
           </h2>
           <p className="max-w-2xl mx-auto text-muted-foreground">
-            Customized training programs designed to transform your body and elevate your fitness level.
+            Free, AI-generated training programs designed to transform your body and elevate your fitness level.
             Select your workout focus below:
           </p>
         </div>
@@ -68,7 +68,7 @@ export function WorkoutProgram() {
                         asChild
                       >
                         <a href="#gallery" className="flex items-center">
-                          View all progress photos <ChevronRight className="ml-2 h-4 w-4" />
+                          View fitness gallery <ChevronRight className="ml-2 h-4 w-4" />
                         </a>
                       </Button>
                     </div>
