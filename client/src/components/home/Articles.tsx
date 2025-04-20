@@ -22,11 +22,11 @@ export function Articles() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="font-display text-4xl md:text-5xl mb-4">
-            READ OUR <span className="text-primary">ARTICLES</span>
+            AI <span className="text-primary">INSIGHTS</span>
           </h2>
           <p className="max-w-2xl mx-auto text-muted-foreground">
-            Insights and education to help you maximize your fitness journey.
-            Learn from our experience and avoid common pitfalls.
+            AI-generated fitness insights to help you maximize your training journey.
+            Learn from our advanced algorithms and avoid common training mistakes.
           </p>
         </div>
 

@@ -21,10 +21,10 @@ export function WeeklySchedule() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="font-display text-4xl md:text-5xl mb-4">
-            WEEKLY <span className="text-primary">SCHEDULE</span>
+            AI <span className="text-primary">SCHEDULE</span>
           </h2>
           <p className="max-w-2xl mx-auto text-muted-foreground">
-            Plan your workouts for maximum results. Our recommended weekly schedule
+            AI-optimized weekly training plan for maximum results. This carefully balanced schedule
             alternates between upper and lower body training with strategic rest days.
           </p>
         </div>
@@ -79,7 +79,7 @@ export function WeeklySchedule() {
 
           <Card className="mt-12 bg-background p-6 border-border">
             <h3 className="font-display text-2xl mb-4">
-              PRO <span className="text-primary">TIPS</span>
+              AI <span className="text-primary">TIPS</span>
             </h3>
             <ul className="space-y-4">
               <li className="flex items-start">

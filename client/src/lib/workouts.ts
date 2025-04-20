@@ -283,22 +283,22 @@ export interface Article {
 export const articles: Article[] = [
   {
     image: "https://images.unsplash.com/photo-1616279969763-926394669080?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    title: "RECOVERY STRATEGIES FOR MAXIMUM GAINS",
-    description: "Learn how proper recovery techniques can significantly improve your muscle growth and overall performance in the gym.",
+    title: "AI-OPTIMIZED RECOVERY STRATEGIES",
+    description: "Our AI has analyzed thousands of fitness routines to identify the most effective recovery techniques for muscle growth and overall performance.",
     author: {
-      name: "Carlos Mendez",
-      role: "Fitness Coach",
+      name: "AI Coach",
+      role: "Machine Learning System",
       avatar: "https://randomuser.me/api/portraits/men/32.jpg",
     },
     rating: 5,
   },
   {
     image: "https://images.unsplash.com/photo-1547592180-85f173990554?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    title: "NUTRITION FUNDAMENTALS FOR MUSCLE BUILDING",
-    description: "Discover the essential nutritional principles that will support your muscle growth and help you achieve your fitness goals faster.",
+    title: "NUTRITION PLANNING WITH AI",
+    description: "Discover how AI can analyze your workout data to generate personalized nutrition recommendations that support your specific fitness goals.",
     author: {
-      name: "Laura Peterson",
-      role: "Nutrition Specialist",
+      name: "NutriBot 3000",
+      role: "AI Nutrition Assistant",
       avatar: "https://randomuser.me/api/portraits/women/44.jpg",
     },
     rating: 4.5,
