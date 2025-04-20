@@ -6,11 +6,11 @@ export function Gallery() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="font-display text-4xl md:text-5xl mb-4">
-            MY <span className="text-primary">JOURNEY</span>
+            FITNESS <span className="text-primary">GALLERY</span>
           </h2>
           <p className="max-w-2xl mx-auto text-muted-foreground">
-            Documenting my fitness transformation journey. These photos represent months of
-            dedication, consistency, and hard work following this training plan.
+            Explore our collection of fitness training images showcasing proper form, exercise 
+            techniques, and workout environments to inspire your fitness journey.
           </p>
         </div>
 

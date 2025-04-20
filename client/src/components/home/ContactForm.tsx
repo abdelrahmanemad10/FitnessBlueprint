@@ -70,11 +70,11 @@ export function ContactForm() {
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="font-display text-4xl md:text-6xl mb-6">
-            LET'S JOIN <span className="text-primary">OUR COMMUNITY</span>
+            JOIN THE <span className="text-primary">AI FITNESS</span> REVOLUTION
           </h2>
           <p className="text-xl text-muted-foreground mb-10">
-            Connect with like-minded fitness enthusiasts and get expert support
-            to accelerate your progress and stay motivated.
+            Subscribe to our newsletter to receive AI-powered workout tips, fitness advice,
+            and updates to our free training programs.
           </p>
           <div className="max-w-md mx-auto">
             <Form {...form}>

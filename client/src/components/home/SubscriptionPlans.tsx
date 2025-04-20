@@ -8,11 +8,11 @@ export function SubscriptionPlans() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="font-display text-4xl md:text-5xl mb-4">
-            CHOOSE YOUR <span className="text-primary">PLAN</span>
+            COMPLETELY <span className="text-primary">FREE PLANS</span>
           </h2>
           <p className="max-w-2xl mx-auto text-muted-foreground">
-            Select the membership option that best fits your goals and commitment level.
-            All plans include access to the full training program.
+            All our AI Trainer plans are completely free. Choose the level of AI assistance 
+            that best fits your fitness goals and experience level.
           </p>
         </div>
 

@@ -54,8 +54,8 @@ export const workoutTabs: WorkoutTab[] = [
     ],
     progressPhoto: {
       image: "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80",
-      title: "MY PROGRESS",
-      description: "Consistent upper body training has transformed my physique. Here's a glimpse of my journey following this program.",
+      title: "AI TRAINER UPPER BODY",
+      description: "Our AI Trainer has designed this optimal upper body program based on the latest exercise science and proven techniques.",
     },
   },
   {
@@ -98,8 +98,8 @@ export const workoutTabs: WorkoutTab[] = [
     ],
     progressPhoto: {
       image: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80",
-      title: "LOWER BODY TRANSFORMATION",
-      description: "Building a strong lower body foundation doesn't happen overnight. Here's my journey to stronger legs and improved performance.",
+      title: "AI TRAINER LOWER BODY",
+      description: "Our AI Trainer has crafted this optimal lower body routine to build strength, power, and endurance in your legs and core.",
     },
   },
 ];
@@ -175,40 +175,40 @@ export interface GalleryImage {
 
 export const galleryImages: GalleryImage[] = [
   {
-    src: "/attached_assets/WhatsApp Image 2025-04-20 at 15.39.04_68c34f60.jpg",
-    alt: "Personal Gym Progress",
+    src: "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80",
+    alt: "Fitness Training",
     title: "STRENGTH TRAINING",
     description: "Building core strength with compound movements",
   },
   {
-    src: "/attached_assets/WhatsApp Image 2025-04-20 at 15.39.03_35f6efcd.jpg",
-    alt: "Personal Gym Progress",
+    src: "https://images.unsplash.com/photo-1549060279-7e168fcee0c2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80",
+    alt: "Cardio Training",
     title: "CARDIO INTEGRATION",
     description: "Balancing strength with cardiovascular health",
   },
   {
-    src: "/attached_assets/WhatsApp Image 2025-04-20 at 15.39.04_c876daf0.jpg",
-    alt: "Personal Gym Progress",
+    src: "https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80",
+    alt: "Form Focus",
     title: "FORM FOCUS",
     description: "Mastering technique for efficient muscle development",
   },
   {
-    src: "/attached_assets/WhatsApp Image 2025-04-20 at 15.39.04_353bf4bf.jpg",
-    alt: "Personal Gym Progress",
+    src: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80",
+    alt: "Equipment Variety",
     title: "EQUIPMENT VARIETY",
     description: "Incorporating diverse tools for complete fitness",
   },
   {
-    src: "/attached_assets/WhatsApp Image 2025-04-20 at 15.39.04_3aba8d2e.jpg",
-    alt: "Personal Gym Progress",
+    src: "https://images.unsplash.com/photo-1571902943202-507ec2618e8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80",
+    alt: "Training Environment",
     title: "TRAINING ENVIRONMENT",
     description: "Creating the optimal space for progress",
   },
   {
-    src: "/attached_assets/WhatsApp Image 2025-04-20 at 15.39.04_b4a4f8f4.jpg",
-    alt: "Personal Gym Progress",
+    src: "https://images.unsplash.com/photo-1599058917212-d750089bc07e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80",
+    alt: "Consistent Routine",
     title: "CONSISTENT ROUTINE",
-    description: "Day by day, building a stronger version of myself",
+    description: "Day by day, building a stronger fitness routine",
   },
 ];
 
@@ -224,45 +224,44 @@ export interface SubscriptionPlan {
 
 export const subscriptionPlans: SubscriptionPlan[] = [
   {
-    name: "BASIC PLAN",
-    price: 12,
-    features: {
-      included: [
-        "Access to all workouts",
-        "Training schedule",
-        "Exercise tutorials",
-      ],
-      excluded: [
-        "Personalized feedback",
-        "Nutrition guidance",
-      ],
-    },
-  },
-  {
-    name: "PREMIUM PLAN",
-    price: 29,
+    name: "FREE PLAN",
+    price: 0,
     isPopular: true,
     features: {
       included: [
         "Access to all workouts",
         "Training schedule",
         "Exercise tutorials",
-        "Monthly feedback sessions",
-        "Basic nutrition plan",
+        "Weekly fitness tips",
+        "Community support",
       ],
       excluded: [],
     },
   },
   {
-    name: "ELITE PLAN",
-    price: 79,
+    name: "AI PLAN",
+    price: 0,
     features: {
       included: [
-        "All Premium features",
-        "Weekly check-ins",
-        "Custom training program",
-        "Detailed nutrition coaching",
-        "1-on-1 video consultations",
+        "Everything in Free Plan",
+        "AI-generated workout variations",
+        "Personalized training tips",
+        "Progress tracking tools",
+        "Fitness goal recommendations",
+      ],
+      excluded: [],
+    },
+  },
+  {
+    name: "ADVANCED AI",
+    price: 0,
+    features: {
+      included: [
+        "Everything in AI Plan",
+        "Advanced AI coaching",
+        "Custom program generation",
+        "Detailed progress analysis",
+        "Recovery optimization",
       ],
       excluded: [],
     },
