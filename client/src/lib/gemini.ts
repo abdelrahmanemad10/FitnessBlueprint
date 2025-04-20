@@ -46,7 +46,7 @@ export async function generateDietPlan(
   language: "english" | "arabic" = "english"
 ) {
   try {
-    const response = await apiRequest("/api/diet-plan", {
+    const response = await fetch("/api/diet-plan", {
       method: "POST",
       body: JSON.stringify({
         goal,
@@ -62,7 +62,12 @@ export async function generateDietPlan(
       }
     });
     
-    return response.dietPlan;
+    if (!response.ok) {
+      throw new Error(`Error: ${response.status}`);
+    }
+    
+    const data = await response.json();
+    return data.dietPlan;
   } catch (error) {
     console.error("Error generating diet plan:", error);
     return language === "arabic" 

@@ -7,18 +7,19 @@ import { Gallery } from "@/components/home/Gallery";
 import { SubscriptionPlans } from "@/components/home/SubscriptionPlans";
 import { Articles } from "@/components/home/Articles";
 import { ContactForm } from "@/components/home/ContactForm";
+import { AiChatbot } from "@/components/home/AiChatbot"; 
 import { Footer } from "@/components/layout/Footer";
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-background">
-      <Header>
-        <Hero />
-      </Header>
+      <Header />
+      <Hero />
       <Stats />
       <WorkoutProgram />
       <WeeklySchedule />
       <Gallery />
+      <AiChatbot />
       <SubscriptionPlans />
       <Articles />
       <ContactForm />
