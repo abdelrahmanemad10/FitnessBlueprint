@@ -4,8 +4,21 @@ import { storage } from "./storage";
 import { exercises } from "./exercises";
 import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } from "@google/generative-ai";
 
-// Initialize the Gemini API 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "");
+// Initialize the Gemini API with environment variable
+// We'll create a function to get the API client so it can be refreshed if the key changes
+function getGeminiClient() {
+  const apiKey = process.env.GEMINI_API_KEY || "";
+  if (!apiKey) {
+    console.warn("Warning: GEMINI_API_KEY is not set or empty");
+  }
+  return new GoogleGenerativeAI(apiKey);
+}
+
+// Function to check if we have a valid API key
+function hasValidApiKey(): boolean {
+  const apiKey = process.env.GEMINI_API_KEY || "";
+  return apiKey.length > 0;
+}
 
 // Safety settings for the model
 const safetySettings = [
@@ -108,17 +121,52 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(400).json({ error: "Message is required" });
       }
 
-      // Get the Gemini Pro model
+      // Check for CEO-related keywords to specially handle those queries
+      const ceoKeywords = ['ceo', 'founder', 'abdelrahman', 'emad', 'owner', 'created', 'مؤسس', 'الرئيس'];
+      const isCeoQuery = ceoKeywords.some(keyword => 
+        message.toLowerCase().includes(keyword.toLowerCase())
+      );
+
+      // Get the Gemini Pro model with the current API key
+      const genAI = getGeminiClient();
       const model = genAI.getGenerativeModel({
         model: "gemini-pro",
         safetySettings,
       });
 
-      // Create the prompt with context
-      const enhancedPrompt = `${systemPrompt}\n\nUser message: ${message}`;
+      let prompt: string;
+      
+      if (isCeoQuery) {
+        // Special handling for CEO questions with explicit CEO information
+        prompt = `
+        Please answer the following question about the CEO of AI Trainer. Here is the CEO information:
+        ${ceoInfo}
+        
+        The user is asking: ${message}
+        
+        Make sure to include details about Eng. Abdelrahman Emad in your response, even if the question isn't directly about him.
+        `;
+      } else {
+        // Standard prompt with system context
+        prompt = `${systemPrompt}\n\n`;
+        
+        // Add conversation history for context
+        if (history.length > 0) {
+          history.forEach((msg: any) => {
+            if (msg.role === 'user') {
+              prompt += `User: ${msg.content}\n`;
+            } else if (msg.role === 'assistant') {
+              prompt += `AI Assistant: ${msg.content}\n`;
+            }
+          });
+        }
+        
+        // Add the current message
+        prompt += `User message: ${message}`;
+      }
 
-      // Generate content directly
-      const result = await model.generateContent(enhancedPrompt);
+      // Generate content
+      const result = await model.generateContent(prompt);
       const response = result.response.text();
       
       res.json({ response });
@@ -149,7 +197,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(400).json({ error: "Missing required fields" });
       }
 
-      // Get the Gemini Pro model
+      // Get the Gemini Pro model with the current API key
+      const genAI = getGeminiClient();
       const model = genAI.getGenerativeModel({
         model: "gemini-pro",
         safetySettings,
