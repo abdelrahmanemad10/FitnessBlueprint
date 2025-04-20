@@ -120,12 +120,37 @@ export async function registerRoutes(app: Express): Promise<Server> {
       if (!message) {
         return res.status(400).json({ error: "Message is required" });
       }
+      
+      // Check if we have a valid API key before proceeding
+      if (!hasValidApiKey()) {
+        console.error("Missing valid Gemini API key");
+        return res.status(500).json({ 
+          error: "API configuration error", 
+          details: "Missing or invalid API key" 
+        });
+      }
 
       // Check for CEO-related keywords to specially handle those queries
-      const ceoKeywords = ['ceo', 'founder', 'abdelrahman', 'emad', 'owner', 'created', 'مؤسس', 'الرئيس'];
-      const isCeoQuery = ceoKeywords.some(keyword => 
+      // Expand keyword list for better detection in both English and Arabic
+      const ceoKeywords = [
+        'ceo', 'chief executive', 'founder', 'abdelrahman', 'emad', 'owner', 'created', 'who made', 'who built', 'who created',
+        'مؤسس', 'الرئيس', 'المدير', 'التنفيذي', 'عبدالرحمن', 'عماد', 'من هو', 'من أنشأ'
+      ];
+      
+      // Special case for the exact 'who is' question about CEO
+      const isDirectCeoQuery = 
+        message.toLowerCase().trim() === 'who is the ceo' || 
+        message.toLowerCase().trim() === 'who is ceo' ||
+        message.toLowerCase().includes('who is the ceo of') ||
+        message.toLowerCase().includes('من هو الرئيس') ||
+        message.toLowerCase().includes('من هو مؤسس');
+
+      // Check if any keyword is present
+      const containsCeoKeyword = ceoKeywords.some(keyword => 
         message.toLowerCase().includes(keyword.toLowerCase())
       );
+      
+      const isCeoQuery = isDirectCeoQuery || containsCeoKeyword;
 
       // Get the Gemini Pro model with the current API key
       const genAI = getGeminiClient();
@@ -138,14 +163,29 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       if (isCeoQuery) {
         // Special handling for CEO questions with explicit CEO information
-        prompt = `
-        Please answer the following question about the CEO of AI Trainer. Here is the CEO information:
-        ${ceoInfo}
+        const isArabicQuery = /[\u0600-\u06FF]/.test(message);
         
-        The user is asking: ${message}
-        
-        Make sure to include details about Eng. Abdelrahman Emad in your response, even if the question isn't directly about him.
-        `;
+        if (isArabicQuery) {
+          // Arabic prompt for CEO questions
+          prompt = `
+          الرجاء الإجابة على السؤال التالي حول الرئيس التنفيذي لشركة AI Trainer. إليك معلومات عن الرئيس التنفيذي:
+          ${ceoInfo}
+          
+          السؤال هو: ${message}
+          
+          تأكد من تضمين تفاصيل عن المهندس عبد الرحمن عماد في إجابتك. أجب باللغة العربية.
+          `;
+        } else {
+          // English prompt for CEO questions
+          prompt = `
+          Please answer the following question about the CEO of AI Trainer. Here is the CEO information:
+          ${ceoInfo}
+          
+          The user is asking: ${message}
+          
+          Make sure to include details about Eng. Abdelrahman Emad in your response, even if the question isn't directly about him.
+          `;
+        }
       } else {
         // Standard prompt with system context
         prompt = `${systemPrompt}\n\n`;

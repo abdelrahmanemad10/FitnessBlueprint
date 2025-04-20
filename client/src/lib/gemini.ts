@@ -11,6 +11,12 @@ export async function generateChatResponse(
   message: string,
   history: ChatMessage[] = []
 ) {
+  // Check for CEO-related keywords to provide a hardcoded fallback in case of API failure
+  const ceoKeywords = ['ceo', 'founder', 'abdelrahman', 'emad', 'owner', 'created', 'مؤسس', 'الرئيس'];
+  const isCeoQuery = ceoKeywords.some(keyword => 
+    message.toLowerCase().includes(keyword.toLowerCase())
+  );
+  
   try {
     const response = await fetch("/api/chat", {
       method: "POST",
@@ -31,7 +37,26 @@ export async function generateChatResponse(
     return data.response;
   } catch (error) {
     console.error("Error generating chat response:", error);
-    return "Sorry, I encountered an error. Please try again later.";
+    
+    // Special CEO fallback response if API is unavailable
+    if (isCeoQuery) {
+      // Check if the message appears to be in Arabic
+      const containsArabic = /[\u0600-\u06FF]/.test(message);
+      
+      if (containsArabic) {
+        return "المهندس عبد الرحمن عماد هو الرئيس التنفيذي لـ AI Trainer. وهو خبير في اللياقة البدنية ورائد أعمال في مجال التكنولوجيا، يسعى إلى جعل تدريبات اللياقة عالية الجودة متاحة للجميع من خلال تكنولوجيا الذكاء الاصطناعي.";
+      } else {
+        return "Eng. Abdelrahman Emad is the CEO of AI Trainer. He is a fitness expert and technology entrepreneur on a mission to democratize access to high-quality fitness training through AI technology.";
+      }
+    }
+    
+    // General error fallback
+    const containsArabic = /[\u0600-\u06FF]/.test(message);
+    if (containsArabic) {
+      return "عذراً، حدث خطأ. يرجى المحاولة مرة أخرى لاحقاً.";
+    } else {
+      return "Sorry, I encountered an error. Please try again later.";
+    }
   }
 }
 
