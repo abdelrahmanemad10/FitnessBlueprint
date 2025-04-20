@@ -6,6 +6,13 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+// Pass API key to frontend
+app.get('/api/env', (req, res) => {
+  res.json({
+    VITE_GEMINI_API_KEY: process.env.GEMINI_API_KEY || '',
+  });
+});
+
 app.use((req, res, next) => {
   const start = Date.now();
   const path = req.path;

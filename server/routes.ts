@@ -4,7 +4,7 @@ import { storage } from "./storage";
 import { exercises } from "./exercises";
 import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } from "@google/generative-ai";
 
-// Initialize the Gemini API
+// Initialize the Gemini API 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "");
 
 // Safety settings for the model
@@ -112,25 +112,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const model = genAI.getGenerativeModel({
         model: "gemini-pro",
         safetySettings,
-        generationConfig: {
-          temperature: 0.7,
-          maxOutputTokens: 1000,
-        },
       });
 
-      // Start a chat session
-      const chat = model.startChat();
-      
-      // Add chat history if available
-      for (const msg of history) {
-        await chat.sendMessage(msg.content);
-      }
-
-      // Add the system prompt to guide the AI's behavior
+      // Create the prompt with context
       const enhancedPrompt = `${systemPrompt}\n\nUser message: ${message}`;
 
-      // Send the message and get the response
-      const result = await chat.sendMessage(enhancedPrompt);
+      // Generate content directly
+      const result = await model.generateContent(enhancedPrompt);
       const response = result.response.text();
       
       res.json({ response });
